@@ -37,6 +37,8 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			while (format[i] && format[i] == ' ')
+				i++;
 			if (format[i] == 's' || format[i] == 'S')
 				len += s_handler(va_arg(ap, char *));
 			else if (format[i] == 'c' || format[i] == 'C')

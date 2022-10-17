@@ -1,6 +1,20 @@
 #include "main.h"
 
 /**
+ * s_handler - check the code
+ * @s: param
+ *
+ * Return: ...
+ */
+
+int s_handler(char *s)
+{
+	if (s == NULL)
+		return (write(1, "(null)", 6));
+	return (write(1, s, _strlen(s)));
+}
+
+/**
  * _printf - check the code
  * @format: param
  *
@@ -24,13 +38,7 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == 's')
-			{
-				s = va_arg(ap, char *);
-				if (s == NULL)
-					len += write(1, "(null)", 6);
-				else
-					len += write(1, s, _strlen(s));
-			}
+				len += s_handler(va_arg(ap, char *));
 			else if (format[i] == 'c')
 			{
 				c = va_arg(ap, int);

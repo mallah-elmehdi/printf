@@ -13,5 +13,6 @@ void *_calloc(unsigned int nmemb, unsigned int size);
 int len_s(long n);
 char *neg_case(long a);
 char *_itoa(int a);
+int s_handler(char *s);
 
 #endif

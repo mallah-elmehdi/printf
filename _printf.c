@@ -32,14 +32,14 @@ int _printf(const char *format, ...)
 	i = 0;
 	len = 0;
 	va_start(ap, format);
-	while (format[i])
+	while (format && format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 's')
+			if (format[i] == 's' || format[i] == 'S')
 				len += s_handler(va_arg(ap, char *));
-			else if (format[i] == 'c')
+			else if (format[i] == 'c' || format[i] == 'C')
 			{
 				c = va_arg(ap, int);
 				len += write(1, &c, 1);

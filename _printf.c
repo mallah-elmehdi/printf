@@ -26,7 +26,10 @@ int _printf(const char *format, ...)
 			if (format[i] == 's')
 			{
 				s = va_arg(ap, char *);
-				len += write(1, s, _strlen(s));
+				if (s == NULL)
+					len += write(1, "(null)", 6);
+				else
+					len += write(1, s, _strlen(s));
 			}
 			else if (format[i] == 'c')
 			{

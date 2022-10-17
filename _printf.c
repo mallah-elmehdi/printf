@@ -53,8 +53,6 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 				len += write(1, "%", 1);
-			else
-				len += write(1, &format[i], 1);
 		}
 		else
 			len += write(1, &format[i], 1);

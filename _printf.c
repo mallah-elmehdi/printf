@@ -29,6 +29,18 @@ int s_handler(char *s)
 }
 
 /**
+ * c_handler - check the code
+ * @s: param
+ *
+ * Return: ...
+ */
+
+int c_handler(char s)
+{
+	return (write(1, &s, 1));
+}
+
+/**
  * _printf - check the code
  * @format: param
  *
@@ -56,17 +68,16 @@ int _printf(const char *format, ...)
 			if (format[i] == 's' || format[i] == 'S')
 				len += s_handler(va_arg(ap, char *));
 			else if (format[i] == 'c' || format[i] == 'C')
-			{
-				c = va_arg(ap, int);
-				len += write(1, &c, 1);
-			}
+				len += c_handler(va_arg(ap, int));
 			else if (format[i] == 'i' || format[i] == 'd')
 			{
 				s = _itoa(va_arg(ap, int));
 				len += write(1, s, _strlen(s));
 			}
-			else if (format[i] == '%' || !format[i])
+			else if (format[i] == '%' || format[i] == '\0')
 				len += write(1, "%", 1);
+			else if (format[i] == '\0')
+				i--;
 			else
 				len += help(format[i]);
 		}

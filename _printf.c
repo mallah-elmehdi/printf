@@ -73,7 +73,7 @@ int _printf(const char *format, ...)
 				s = _itoa(va_arg(ap, int));
 				len += write(1, s, _strlen(s));
 			}
-			else if (format[i] == '%' || format[i] == '\0')
+			else if (format[i] == '%')
 				len += write(1, "%", 1);
 			else if (format[i] == '\0')
 				i--;

@@ -46,13 +46,13 @@ int _printf(const char *format, ...)
 	i = 0;
 	len = 0;
 	va_start(ap, format);
-	while (format && format[i])
+	if (!format)
+		return (-1);
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			while (format[i] && format[i] == ' ')
-				i++;
 			if (format[i] == 's' || format[i] == 'S')
 				len += s_handler(va_arg(ap, char *));
 			else if (format[i] == 'c' || format[i] == 'C')

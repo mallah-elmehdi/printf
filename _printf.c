@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 				s = _itoa(va_arg(ap, int));
 				len += write(1, s, _strlen(s));
 			}
-			else if (format[i] == '%' && !format[i])
+			else if (format[i] == '%' || !format[i])
 				len += write(1, "%", 1);
 			else
 				len += help(format[i]);

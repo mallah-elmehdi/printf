@@ -52,7 +52,6 @@ int _printf(const char *format, ...)
 	int i;
 	int len;
 	char *s;
-	char c;
 	va_list ap;
 
 	i = 0;

@@ -1,6 +1,20 @@
 #include "main.h"
 
 /**
+ * help - check the code
+ * @c: param
+ *
+ * Return: ...
+ */
+
+int help(char c)
+{
+	write(1, "%", 1);
+	write(1, &c, 1);
+	return (2);
+}
+
+/**
  * s_handler - check the code
  * @s: param
  *
@@ -53,8 +67,8 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 				len += write(1, "%", 1);
-			else if (format[i] == 0)
-				break;
+			else
+				len += help(format[i]);
 		}
 		else
 			len += write(1, &format[i], 1);
